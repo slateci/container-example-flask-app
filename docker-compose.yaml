@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  slate:
+    build: .
+    restart: always
+  nginx:
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/
+    restart: always
+    image: nginx
+    depends_on:
+      - "slate"
